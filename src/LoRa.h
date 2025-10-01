@@ -93,12 +93,13 @@ public:
   void setSPIFrequency(uint32_t frequency);
 
   void dumpRegisters(Stream& out);
+  void handleDio0Rise();
+  static void onDio0Rise();
 
 private:
   void explicitHeaderMode();
   void implicitHeaderMode();
 
-  void handleDio0Rise();
   bool isTransmitting();
 
   int getSpreadingFactor();
@@ -110,7 +111,6 @@ private:
   void writeRegister(uint8_t address, uint8_t value);
   uint8_t singleTransfer(uint8_t address, uint8_t value);
 
-  static void onDio0Rise();
 
 private:
   SPISettings _spiSettings;

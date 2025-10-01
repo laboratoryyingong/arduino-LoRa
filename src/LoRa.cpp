@@ -363,36 +363,38 @@ void LoRaClass::onReceive(void(*callback)(int))
 {
   _onReceive = callback;
 
-  if (callback) {
-    pinMode(_dio0, INPUT);
-#ifdef SPI_HAS_NOTUSINGINTERRUPT
-    SPI.usingInterrupt(digitalPinToInterrupt(_dio0));
-#endif
-    attachInterrupt(digitalPinToInterrupt(_dio0), LoRaClass::onDio0Rise, RISING);
-  } else {
-    detachInterrupt(digitalPinToInterrupt(_dio0));
-#ifdef SPI_HAS_NOTUSINGINTERRUPT
-    SPI.notUsingInterrupt(digitalPinToInterrupt(_dio0));
-#endif
-  }
+// IGNORE --- App will handler RX done interrupt itself YiBin @20250930
+//  if (callback) {
+//    pinMode(_dio0, INPUT);
+//#ifdef SPI_HAS_NOTUSINGINTERRUPT
+//    SPI.usingInterrupt(digitalPinToInterrupt(_dio0));
+//#endif
+//    attachInterrupt(digitalPinToInterrupt(_dio0), LoRaClass::onDio0Rise, RISING);
+//  } else {
+//    detachInterrupt(digitalPinToInterrupt(_dio0));
+//#ifdef SPI_HAS_NOTUSINGINTERRUPT
+//    SPI.notUsingInterrupt(digitalPinToInterrupt(_dio0));
+//#endif
+//  }
 }
 
 void LoRaClass::onTxDone(void(*callback)())
 {
   _onTxDone = callback;
 
-  if (callback) {
-    pinMode(_dio0, INPUT);
-#ifdef SPI_HAS_NOTUSINGINTERRUPT
-    SPI.usingInterrupt(digitalPinToInterrupt(_dio0));
-#endif
-    attachInterrupt(digitalPinToInterrupt(_dio0), LoRaClass::onDio0Rise, RISING);
-  } else {
-    detachInterrupt(digitalPinToInterrupt(_dio0));
-#ifdef SPI_HAS_NOTUSINGINTERRUPT
-    SPI.notUsingInterrupt(digitalPinToInterrupt(_dio0));
-#endif
-  }
+// IGNORE --- App will handler RX done interrupt itself YiBin @20250930
+//   if (callback) {
+//     pinMode(_dio0, INPUT);
+// #ifdef SPI_HAS_NOTUSINGINTERRUPT
+//     SPI.usingInterrupt(digitalPinToInterrupt(_dio0));
+// #endif
+//     attachInterrupt(digitalPinToInterrupt(_dio0), LoRaClass::onDio0Rise, RISING);
+//   } else {
+//     detachInterrupt(digitalPinToInterrupt(_dio0));
+// #ifdef SPI_HAS_NOTUSINGINTERRUPT
+//     SPI.notUsingInterrupt(digitalPinToInterrupt(_dio0));
+// #endif
+//   }
 }
 
 void LoRaClass::receive(int size)
